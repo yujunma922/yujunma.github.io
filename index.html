@@ -1,296 +1,297 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Yujun Ma, PhD</title>
-
   <style>
     :root{
-      --bg:#0b1020;
-      --card:#0f172a;
-      --text:#e5e7eb;
-      --muted:#c7d2fe;
-      --accent:#38bdf8;
+      --bg0:#070b1b;
+      --bg1:#0b1230;
+      --card:rgba(255,255,255,.06);
+      --card2:rgba(255,255,255,.08);
+      --border:rgba(255,255,255,.10);
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.72);
+      --muted2:rgba(255,255,255,.60);
+      --accent:#6ee7ff;
       --accent2:#a78bfa;
-      --line: rgba(255,255,255,.12);
+      --chip:rgba(110,231,255,.12);
+      --chipBorder:rgba(110,231,255,.28);
+      --shadow: 0 20px 60px rgba(0,0,0,.35);
+      --radius: 22px;
     }
-    *{box-sizing:border-box}
+
+    html{scroll-behavior:smooth;}
     body{
       margin:0;
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
-      background:
-        radial-gradient(1200px 600px at 20% -10%, rgba(56,189,248,.30), transparent 60%),
-        radial-gradient(900px 500px at 85% 0%, rgba(167,139,250,.28), transparent 55%),
-        radial-gradient(900px 700px at 60% 110%, rgba(34,211,238,.18), transparent 60%),
-        var(--bg);
+      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial;
       color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% 0%, rgba(110,231,255,.16), transparent 60%),
+        radial-gradient(1200px 700px at 90% 10%, rgba(167,139,250,.16), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
     }
-    a{color:var(--accent); text-decoration:none}
-    a:hover{text-decoration:underline}
 
-    .wrap{max-width:1100px; margin:0 auto; padding:34px 18px 70px}
-
-    .topbar{
+    .wrap{max-width:1100px; margin:0 auto; padding:24px 18px 80px;}
+    .nav{
+      position:sticky; top:12px; z-index:10;
       display:flex; align-items:center; justify-content:space-between;
-      padding:14px 16px;
-      border:1px solid var(--line);
-      border-radius:16px;
-      background: rgba(15,23,42,.60);
-      backdrop-filter: blur(8px);
-      position:sticky; top:14px; z-index:10;
-    }
-    .brand{font-weight:800; letter-spacing:.2px}
-    .nav a{margin-left:14px; color:#c7d2fe}
-
-    .card{
-      border:1px solid var(--line);
-      border-radius:18px;
-      background: rgba(15,23,42,.62);
+      padding:14px 18px;
+      background: rgba(10,16,40,.65);
+      border:1px solid var(--border);
       backdrop-filter: blur(10px);
-      box-shadow: 0 20px 60px rgba(0,0,0,.25);
+      border-radius: 999px;
+      box-shadow: var(--shadow);
     }
+    .brand{font-weight:700; letter-spacing:.2px;}
+    .nav a{
+      color:var(--muted);
+      text-decoration:none;
+      margin-left:18px;
+      font-weight:600;
+    }
+    .nav a:hover{color:var(--text);}
 
-    /* HERO */
-    .hero{display:grid; grid-template-columns: 0.95fr 1.05fr; gap:18px; margin-top:18px}
-    @media (max-width: 900px){ .hero{grid-template-columns:1fr} .topbar{position:relative; top:auto} }
-
-    .hero-left{padding:22px}
-    h1{margin:0 0 8px; font-size:44px; line-height:1.1}
-    .subtitle{color:var(--muted); font-size:16px; line-height:1.6}
-    .links{margin-top:14px; display:flex; flex-wrap:wrap; gap:10px}
+    .grid2{display:grid; grid-template-columns: 1.25fr .9fr; gap:18px; margin-top:18px;}
+    .card{
+      background: var(--card);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:22px;
+    }
+    .hero h1{margin:0 0 10px; font-size:56px; line-height:1.05;}
+    .hero .sub{color:var(--muted); font-size:18px; line-height:1.55;}
+    .btns{display:flex; flex-wrap:wrap; gap:10px; margin-top:16px;}
     .btn{
       display:inline-flex; align-items:center; gap:10px;
-      padding:10px 12px; border-radius:12px;
-      border:1px solid var(--line);
-      background: rgba(2,6,23,.35);
-      color:#e5e7eb;
+      padding:12px 14px;
+      border-radius: 999px;
+      border:1px solid var(--border);
+      background: rgba(0,0,0,.18);
+      color:var(--text);
+      text-decoration:none;
+      font-weight:650;
     }
-    .btn:hover{border-color: rgba(56,189,248,.55); text-decoration:none}
+    .btn:hover{border-color:rgba(255,255,255,.22); background: rgba(0,0,0,.26);}
+    .btn small{color:var(--muted2); font-weight:600;}
 
-    .hero-right{padding:22px; display:flex; gap:16px; align-items:center}
-    @media (max-width: 900px){ .hero-right{flex-direction:column; align-items:flex-start} }
-
-    .headshot{
-      width:155px; height:155px; border-radius:18px;
-      object-fit:cover;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.06);
-      flex:0 0 auto;
+    .aboutGrid{display:grid; grid-template-columns: 200px 1fr; gap:16px; align-items:start;}
+    .imgBox{
+      width:200px; height:200px;
+      border-radius: 18px;
+      overflow:hidden;
+      background: rgba(255,255,255,.04);
+      border:1px solid var(--border);
     }
-    .mini{
-      color:var(--muted);
-      font-size:14.5px;
-      line-height:1.65;
-    }
-    .mini strong{color:#e0e7ff}
+    .imgBox img{width:100%; height:100%; object-fit:cover; display:block;}
+    .section{margin-top:22px;}
+    .section h2{margin:0 0 10px; font-size:28px;}
+    .section p{margin:0; color:var(--muted); font-size:16.5px; line-height:1.75;}
+    .divider{height:1px; background: rgba(255,255,255,.10); margin:22px 0;}
 
-    /* SECTIONS */
-    .section{margin-top:20px}
-    .section-title{
-      margin:0 0 12px;
-      font-size:18px;
-      color:#e0e7ff;
-      letter-spacing:.2px;
-    }
-    .pad{padding:22px}
-    .divider{height:1px; background:var(--line); margin:16px 0}
-
-    /* PROJECTS */
-    .project{
+    .proj{
       display:grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap:18px;
-      align-items:stretch;
+      grid-template-columns: 1.05fr .95fr;
+      gap:16px;
+      align-items:start;
+      padding:18px;
+      background: rgba(255,255,255,.05);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
       margin-top:14px;
     }
-    .project:first-of-type{margin-top:0}
-    @media (max-width: 950px){ .project{grid-template-columns:1fr} }
-
-    .proj-text h3{
-      margin:0 0 8px;
-      font-size:18px;
-      letter-spacing:.2px;
-    }
-    .proj-text p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.65;
-      font-size:14.5px;
-    }
-
-    .tagrow{margin-top:10px; display:flex; flex-wrap:wrap; gap:8px}
-    .tag{
-      display:inline-block;
-      font-size:12px;
-      color:#dbeafe;
-      border:1px solid rgba(56,189,248,.35);
-      background: rgba(56,189,248,.10);
-      padding:4px 10px;
+    .proj h3{margin:0 0 8px; font-size:22px;}
+    .proj p{margin:0; color:var(--muted); line-height:1.7;}
+    .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px;}
+    .chip{
+      padding:7px 10px;
       border-radius:999px;
-    }
-
-    .proj-img img{
-      width:100%;
-      height:260px;
-      object-fit:cover;
-      border-radius:14px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.05);
-    }
-    .proj-img .grid2{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:12px;
-    }
-    @media (max-width: 650px){ .proj-img .grid2{grid-template-columns:1fr} }
-
-    .foot{
-      margin-top:16px;
-      color:#94a3b8;
+      border:1px solid var(--chipBorder);
+      background: var(--chip);
+      color: rgba(255,255,255,.86);
+      font-weight:650;
       font-size:13px;
     }
-    code{color:#e0e7ff}
+    .figCard{
+      border-radius: 18px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      background: rgba(0,0,0,.18);
+      min-height: 230px;
+    }
+    .figCard img{width:100%; height:auto; display:block;}
+    .figGrid2{display:grid; grid-template-columns: 1fr 1fr; gap:12px;}
+    .caption{padding:10px 12px; font-size:13px; color: var(--muted2); border-top:1px solid var(--border);}
+
+    footer{
+      margin-top:26px;
+      color: var(--muted2);
+      font-size: 13px;
+      text-align:center;
+    }
+
+    @media (max-width: 900px){
+      .grid2{grid-template-columns: 1fr;}
+      .hero h1{font-size:44px;}
+      .aboutGrid{grid-template-columns: 1fr; }
+      .imgBox{width:100%; height:260px;}
+      .proj{grid-template-columns: 1fr;}
+      .figGrid2{grid-template-columns:1fr;}
+    }
   </style>
 </head>
 
 <body>
   <div class="wrap">
-
-    <div class="topbar">
+    <div class="nav">
       <div class="brand">Yujun Ma</div>
-      <div class="nav">
+      <div>
         <a href="#research">Research</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
       </div>
     </div>
 
-    <!-- HERO -->
-    <div class="hero">
-      <div class="card hero-left">
+    <div class="grid2">
+      <div class="card hero">
         <h1>Yujun Ma, PhD</h1>
-        <div class="subtitle">
+        <div class="sub">
           Postdoctoral Research Fellow · Department of Pathology and Laboratory Medicine · University of California, Irvine
         </div>
 
-        <div class="links">
-          <a class="btn" href="mailto:yujunm5@hs.uci.edu">📧 Email</a>
-          <a class="btn" href="https://github.com/yujunma922" target="_blank" rel="noreferrer">🐙 GitHub</a>
-          <a class="btn" href="https://www.linkedin.com/in/yujun-monica-ma-051a53252" target="_blank" rel="noreferrer">in LinkedIn</a>
-          <!-- Replace with your exact Google Scholar profile link when ready -->
-          <a class="btn" href="https://scholar.google.com" target="_blank" rel="noreferrer">🎓 Google Scholar</a>
+        <div class="btns">
+          <a class="btn" href="mailto:yujunm5@hs.uci.edu">📧 Email <small>yujunm5@hs.uci.edu</small></a>
+          <a class="btn" href="https://github.com/yujunma922" target="_blank" rel="noopener">🐙 GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/yujun-monica-ma-051a53252/" target="_blank" rel="noopener">in LinkedIn</a>
+          <!-- Replace this link with your actual Google Scholar URL -->
+          <a class="btn" href="https://scholar.google.com" target="_blank" rel="noopener">🎓 Google Scholar</a>
         </div>
       </div>
 
-      <div class="card hero-right">
-        <img class="headshot" src="assets/yujun_headshot.png" alt="Yujun Ma headshot">
-        <div class="mini">
-          <strong>About</strong><br>
-          I work on multimodal and temporal deep learning, spanning clinical time-series modeling (EHR), medical imaging and computational pathology, and video understanding. My recent work includes learning robust representations over time, generative modeling for computational staining/destaining, and video-based action recognition and captioning.
-          <div class="foot">Last updated: <span id="year"></span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- RESEARCH -->
-    <div id="research" class="section card pad">
-      <div class="section-title">Research</div>
-      <div style="color: var(--muted); font-size:14.8px; line-height:1.7;">
-        My research focuses on learning reliable, interpretable representations from multimodal data, with an emphasis on temporal modeling. I develop methods for clinical decision support using EHR trajectories, generative modeling for computational pathology, and video understanding for action recognition and captioning. Across these domains, I am interested in robust generalization, evaluation over time, and practical deployment in real-world pipelines.
-      </div>
-    </div>
-
-    <!-- PROJECTS -->
-    <div id="projects" class="section card pad">
-      <div class="section-title">Projects</div>
-
-      <!-- Project 1: EHR -->
-      <div class="project">
-        <div class="proj-text">
-          <h3>Project 1 — EHR Data (Clinical Time-Series & Decision Support)</h3>
-          <p>
-            I develop temporal representation learning and evaluation workflows for ICU EHR trajectories, including drift-aware cohort construction and time-varying performance analysis. This work supports downstream decision support and policy learning settings where robustness and calibration over time matter.
-          </p>
-          <div class="tagrow">
-            <span class="tag">EHR</span>
-            <span class="tag">ICU time-series</span>
-            <span class="tag">Evaluation over time</span>
-            <span class="tag">Robustness</span>
+      <div class="card">
+        <div class="aboutGrid">
+          <div class="imgBox">
+            <img src="assets/Yujun_headshot.jpg" alt="Yujun Ma headshot">
+          </div>
+          <div>
+            <h2 style="margin:0 0 8px; font-size:20px;">About</h2>
+            <p style="margin:0; color:var(--muted); line-height:1.75;">
+              I work on multimodal and temporal deep learning spanning clinical time-series modeling (EHR),
+              medical imaging and computational pathology, and video understanding. My recent work includes
+              robust representation learning over time, generative modeling for computational staining/destaining,
+              and video-based action recognition and captioning.
+            </p>
+            <div style="margin-top:12px; color:var(--muted2); font-size:13px;">Last updated: 2026</div>
           </div>
         </div>
-        <div class="proj-img">
-          <img src="assets/EHR_fig.png" alt="EHR project figure"
-               onerror="this.outerHTML='<div style=&quot;border:1px dashed rgba(255,255,255,.25); border-radius:14px; height:260px; display:flex; align-items:center; justify-content:center; color:#c7d2fe; background:rgba(2,6,23,.25)&quot;>Optional: add an EHR figure (upload as <code>assets/EHR_fig.png</code>)</div>';">
+      </div>
+    </div>
+
+    <div class="section" id="research">
+      <div class="divider"></div>
+      <h2>Research</h2>
+      <p>
+        My research focuses on learning reliable, interpretable representations from multimodal data, with an emphasis on temporal modeling.
+        I develop methods for clinical decision support using EHR trajectories, generative modeling for computational pathology pipelines,
+        and video understanding for action recognition and captioning. Across these domains, I’m interested in robust generalization, evaluation
+        over time, and practical deployment in real-world settings.
+      </p>
+    </div>
+
+    <div class="section" id="projects">
+      <div class="divider"></div>
+      <h2>Projects</h2>
+
+      <!-- Project 1 -->
+      <div class="proj">
+        <div>
+          <h3>Project 1 — EHR Time-series Modeling (Clinical Decision Support)</h3>
+          <p>
+            I develop temporal models for ICU decision support using electronic health records, focusing on outcome prediction,
+            time-aware evaluation, and policy learning with clinically grounded constraints.
+          </p>
+          <div class="chips">
+            <div class="chip">EHR</div>
+            <div class="chip">Temporal modeling</div>
+            <div class="chip">Clinical decision support</div>
+            <div class="chip">Policy learning</div>
+          </div>
+        </div>
+        <div class="figCard">
+          <!-- Optional: add an EHR figure later -->
+          <div style="padding:16px; color:var(--muted2);">
+            (Add an EHR figure here later if you want)
+          </div>
         </div>
       </div>
 
-      <div class="divider"></div>
-
-      <!-- Project 2: Computational staining -->
-      <div class="project">
-        <div class="proj-text">
+      <!-- Project 2 -->
+      <div class="proj">
+        <div>
           <h3>Project 2 — Computational Staining (Generative Modeling in Pathology)</h3>
           <p>
-            I build image-to-image translation pipelines for computational staining and destaining of prostate core tissue images, including patch generation and reconstruction workflows for high-resolution images. This project connects generative modeling with practical pathology imaging pipelines.
+            I build image-to-image translation pipelines for computational staining and destaining of prostate core tissue images,
+            including patch generation and reconstruction workflows for high-resolution images. This connects generative modeling with
+            practical pathology imaging pipelines.
           </p>
-          <div class="tagrow">
-            <span class="tag">Computational pathology</span>
-            <span class="tag">Generative models</span>
-            <span class="tag">Pix2Pix</span>
-            <span class="tag">WSI / patch pipeline</span>
+          <div class="chips">
+            <div class="chip">Computational pathology</div>
+            <div class="chip">Generative models</div>
+            <div class="chip">Pix2Pix</div>
+            <div class="chip">WSI / patch pipeline</div>
           </div>
         </div>
-        <div class="proj-img">
+        <div class="figCard">
+          <!-- IMPORTANT: your filename in GitHub is computaional_staining_fig.png (misspelled).
+               If you rename it to computational_staining_fig.png, update this line accordingly. -->
           <img src="assets/computaional_staining_fig.png" alt="Computational staining figure">
+          <div class="caption">Computational staining figure</div>
         </div>
       </div>
 
-      <div class="divider"></div>
-
-      <!-- Project 3: Video Understanding -->
-      <div class="project">
-        <div class="proj-text">
+      <!-- Project 3 -->
+      <div class="proj">
+        <div>
           <h3>Project 3 — Video Understanding (Action Recognition & Video Captioning)</h3>
           <p>
-            I develop models for video-based understanding, including action recognition and video captioning. My work explores spatiotemporal representation learning and multimodal alignment, with model designs that improve recognition and description of complex actions in videos.
+            I develop models for video-based understanding, including action recognition and video captioning. My work explores
+            spatiotemporal representation learning and multimodal alignment, with model designs that improve recognition and
+            description of complex actions in videos.
           </p>
-          <div class="tagrow">
-            <span class="tag">Action recognition</span>
-            <span class="tag">Video captioning</span>
-            <span class="tag">Spatiotemporal learning</span>
-            <span class="tag">Multimodal</span>
+          <div class="chips">
+            <div class="chip">Action recognition</div>
+            <div class="chip">Video captioning</div>
+            <div class="chip">Spatiotemporal learning</div>
+            <div class="chip">Multimodal</div>
           </div>
         </div>
 
-        <div class="proj-img">
-          <div class="grid2">
+        <div class="figGrid2">
+          <div class="figCard">
             <img src="assets/MFSTmodel_fig.png" alt="MFST model figure">
+            <div class="caption">MFST model figure</div>
+          </div>
+          <div class="figCard">
             <img src="assets/E_CMAT_fig.png" alt="E-CMAT figure">
+            <div class="caption">E-CMAT figure</div>
           </div>
         </div>
       </div>
-
-      <div class="foot">
-        Tip: filenames are case-sensitive. All images should be in <code>assets/</code>.
-      </div>
     </div>
 
-    <!-- CONTACT -->
-    <div id="contact" class="section card pad">
-      <div class="section-title">Contact</div>
-      <div style="color: var(--muted); line-height:1.7;">
-        Email: <a href="mailto:yujunm5@hs.uci.edu">yujunm5@hs.uci.edu</a>
-      </div>
-      <div class="foot">© <span id="copyrightYear"></span> Yujun Ma</div>
+    <div class="section" id="contact">
+      <div class="divider"></div>
+      <h2>Contact</h2>
+      <p>
+        Email: <a style="color:var(--accent);" href="mailto:yujunm5@hs.uci.edu">yujunm5@hs.uci.edu</a>
+      </p>
     </div>
 
+    <footer>
+      © 2026 Yujun Ma · Built with GitHub Pages
+    </footer>
   </div>
-
-  <script>
-    const y = new Date().getFullYear();
-    document.getElementById("year").textContent = y;
-    document.getElementById("copyrightYear").textContent = y;
-  </script>
 </body>
 </html>
