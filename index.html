@@ -4,16 +4,17 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Yujun Ma, PhD</title>
+
   <style>
     :root{
-      --bg0:#0b1226;
-      --bg1:#111b3a;
+      --bg0:#070b1b;
+      --bg1:#0b1230;
 
-      /* Lighten cards so figures stand out more */
-      --card:rgba(255,255,255,.085);
-      --card2:rgba(255,255,255,.11);
-      --border:rgba(255,255,255,.14);
+      /* slightly lighter cards so figures pop more */
+      --card:rgba(255,255,255,.07);
+      --card2:rgba(255,255,255,.10);
 
+      --border:rgba(255,255,255,.12);
       --text:rgba(255,255,255,.92);
       --muted:rgba(255,255,255,.74);
       --muted2:rgba(255,255,255,.62);
@@ -21,10 +22,10 @@
       --accent:#6ee7ff;
       --accent2:#a78bfa;
 
-      --chip:rgba(110,231,255,.14);
+      --chip:rgba(110,231,255,.12);
       --chipBorder:rgba(110,231,255,.30);
 
-      --shadow: 0 20px 60px rgba(0,0,0,.32);
+      --shadow: 0 20px 60px rgba(0,0,0,.35);
       --radius: 22px;
     }
 
@@ -34,17 +35,18 @@
       font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial;
       color:var(--text);
       background:
-        radial-gradient(1200px 600px at 20% 0%, rgba(110,231,255,.18), transparent 60%),
-        radial-gradient(1200px 700px at 90% 10%, rgba(167,139,250,.18), transparent 55%),
+        radial-gradient(1200px 600px at 20% 0%, rgba(110,231,255,.16), transparent 60%),
+        radial-gradient(1200px 700px at 90% 10%, rgba(167,139,250,.16), transparent 55%),
         linear-gradient(180deg, var(--bg0), var(--bg1));
     }
 
     .wrap{max-width:1100px; margin:0 auto; padding:24px 18px 80px;}
+
     .nav{
       position:sticky; top:12px; z-index:10;
       display:flex; align-items:center; justify-content:space-between;
       padding:14px 18px;
-      background: rgba(10,16,40,.62);
+      background: rgba(10,16,40,.65);
       border:1px solid var(--border);
       backdrop-filter: blur(10px);
       border-radius: 999px;
@@ -59,7 +61,8 @@
     }
     .nav a:hover{color:var(--text);}
 
-    .grid2{display:grid; grid-template-columns: 1.25fr .9fr; gap:18px; margin-top:18px;}
+    .grid2{display:grid; grid-template-columns: 1.25fr .95fr; gap:18px; margin-top:18px;}
+
     .card{
       background: var(--card);
       border:1px solid var(--border);
@@ -68,77 +71,97 @@
       padding:22px;
     }
 
-    .hero h1{margin:0 0 10px; font-size:56px; line-height:1.05;}
-    .hero .sub{color:var(--muted); font-size:18px; line-height:1.55;}
-    .btns{display:flex; flex-wrap:wrap; gap:10px; margin-top:16px;}
+    /* HERO: make shorter */
+    .hero h1{
+      margin:0 0 8px;
+      font-size:46px;      /* smaller than before */
+      line-height:1.06;
+      letter-spacing:-0.3px;
+    }
+    .hero .sub{
+      color:var(--muted);
+      font-size:17px;
+      line-height:1.55;
+      margin-bottom:6px;   /* tighter */
+    }
+
+    .btns{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px;}
     .btn{
       display:inline-flex; align-items:center; gap:10px;
       padding:12px 14px;
       border-radius: 999px;
       border:1px solid var(--border);
-      background: rgba(0,0,0,.14);
+      background: rgba(0,0,0,.18);
       color:var(--text);
       text-decoration:none;
       font-weight:650;
     }
-    .btn:hover{border-color:rgba(255,255,255,.26); background: rgba(0,0,0,.22);}
+    .btn:hover{border-color:rgba(255,255,255,.22); background: rgba(0,0,0,.26);}
     .btn small{color:var(--muted2); font-weight:600;}
-
-    /* HERO extras */
-    .miniSection{
-      margin-top:18px;
-      padding-top:16px;
-      border-top:1px solid rgba(255,255,255,.12);
-    }
-    .miniTitle{
-      font-size:14px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      color:rgba(255,255,255,.70);
-      margin:0 0 10px;
-      font-weight:800;
-    }
-    .eduList{margin:0; padding-left:18px; color:var(--muted); line-height:1.8;}
-    .eduList li{margin:6px 0;}
-    .eduMeta{color:var(--muted2); font-size:13px;}
-
-    /* ABOUT: float image so text wraps */
-    .aboutFloat{
-      float:right;
-      width:260px;
-      margin:8px 0 10px 14px;
-      border-radius:18px;
-      overflow:hidden;
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.06);
-      box-shadow: 0 16px 40px rgba(0,0,0,.22);
-    }
-    .aboutFloat img{display:block; width:100%; height:auto;}
-    .aboutText h2{margin:0 0 10px; font-size:22px;}
-    .aboutText p{margin:0; color:var(--muted); line-height:1.85;}
-    .clear{clear:both;}
 
     .section{margin-top:22px;}
     .section h2{margin:0 0 10px; font-size:28px;}
-    .section p{margin:0; color:var(--muted); font-size:16.5px; line-height:1.8;}
+    .section p{margin:0; color:var(--muted); font-size:16.5px; line-height:1.75;}
     .divider{height:1px; background: rgba(255,255,255,.10); margin:22px 0;}
 
-    /* Projects */
+    /* ABOUT: wrap text around photo */
+    .aboutTitle{
+      margin:0 0 10px;
+      font-size:22px;
+      font-weight:750;
+    }
+    .aboutPhoto{
+      float:right;
+      width:210px;          /* smaller headshot */
+      max-width:45%;
+      margin:6px 0 12px 14px;
+      border-radius:18px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.05);
+      overflow:hidden;
+      box-shadow: 0 16px 40px rgba(0,0,0,.25);
+    }
+    .aboutPhoto img{width:100%; height:auto; display:block;}
+    .clearfix::after{content:""; display:block; clear:both;}
+
+    /* EDUCATION */
+    .eduBlock{
+      margin-top:16px;
+      padding-top:14px;
+      border-top:1px solid rgba(255,255,255,.10);
+      color:var(--muted);
+    }
+    .eduLabel{
+      letter-spacing:.28em;
+      font-weight:800;
+      font-size:13px;
+      color:rgba(255,255,255,.55);
+      margin-bottom:10px;
+    }
+    .eduList{
+      margin:0;
+      padding-left:18px;
+      line-height:1.85;
+      color:var(--muted);
+    }
+    .eduList b{color:rgba(255,255,255,.86);}
+
+    /* PROJECTS */
     .proj{
+      margin-top:14px;
       padding:18px;
-      background: rgba(255,255,255,.055);
+      background: rgba(255,255,255,.05);
       border:1px solid var(--border);
       border-radius: var(--radius);
-      margin-top:14px;
     }
-    .projTop{
+    .projGrid{
       display:grid;
-      grid-template-columns: 1.2fr .8fr;
+      grid-template-columns: 1.05fr .95fr;
       gap:16px;
       align-items:start;
     }
     .proj h3{margin:0 0 8px; font-size:22px;}
-    .proj p{margin:0; color:var(--muted); line-height:1.75;}
+    .proj p{margin:0; color:var(--muted); line-height:1.7;}
 
     .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px;}
     .chip{
@@ -146,49 +169,48 @@
       border-radius:999px;
       border:1px solid var(--chipBorder);
       background: var(--chip);
-      color: rgba(255,255,255,.88);
+      color: rgba(255,255,255,.86);
       font-weight:650;
       font-size:13px;
     }
 
-    /* Figures: make them brighter and larger */
+    /* Figure cards: brighter background so figures are clearer */
     .figCard{
       border-radius: 18px;
       overflow:hidden;
-      border:1px solid rgba(255,255,255,.18);
-      background: rgba(255,255,255,.14);
-      box-shadow: 0 18px 55px rgba(0,0,0,.25);
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.10); /* lighter than before */
+      min-height: 240px;
     }
     .figCard img{
       width:100%;
       height:auto;
       display:block;
-      background:#fff;
+      background:#ffffff; /* helps if png has transparency */
     }
     .caption{
       padding:10px 12px;
       font-size:13px;
-      color: rgba(255,255,255,.78);
-      border-top:1px solid rgba(255,255,255,.16);
-      background: rgba(0,0,0,.12);
+      color: var(--muted2);
+      border-top:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.10);
     }
 
-    /* Project 3 figures UNDER text */
-    .figRow3{
+    /* Project 3: stack figures vertically */
+    .figStack{
       display:grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap:14px;
-      margin-top:14px;
+      grid-template-columns: 1fr;
+      gap:12px;
     }
-    .placeholder{
-      min-height: 260px;
+    .figPlaceholder{
       display:flex;
       align-items:center;
       justify-content:center;
       text-align:center;
-      padding:18px;
+      padding:28px 18px;
+      min-height:240px;
       color: rgba(255,255,255,.70);
-      font-weight:700;
+      font-weight:650;
       line-height:1.6;
     }
 
@@ -199,12 +221,11 @@
       text-align:center;
     }
 
-    @media (max-width: 980px){
+    @media (max-width: 900px){
       .grid2{grid-template-columns: 1fr;}
-      .hero h1{font-size:44px;}
-      .projTop{grid-template-columns:1fr;}
-      .aboutFloat{float:none; width:100%; margin:12px 0 12px 0;}
-      .figRow3{grid-template-columns:1fr;}
+      .hero h1{font-size:40px;}
+      .projGrid{grid-template-columns: 1fr;}
+      .aboutPhoto{float:none; width:100%; max-width:100%; margin:10px 0 12px 0;}
     }
   </style>
 </head>
@@ -236,33 +257,32 @@
         </div>
 
         <!-- EDUCATION block -->
-        <div class="miniSection">
-          <div class="miniTitle">Education</div>
+        <div class="eduBlock">
+          <div class="eduLabel">EDUCATION</div>
           <ul class="eduList">
-            <li><b>Ph.D.</b> Computer Science <span class="eduMeta">(Massey University)</span></li>
-            <li><b>M.S.</b> <span class="eduMeta">(add if you want)</span></li>
-            <li><b>B.S.</b> <span class="eduMeta">(add if you want)</span></li>
+            <li><b>Ph.D.</b> Computer Science (Massey University)</li>
+            <!-- Optional lines: delete if you don’t want them -->
+            <li><b>M.S.</b> (add if you want)</li>
+            <li><b>B.S.</b> (add if you want)</li>
           </ul>
-          <div class="eduMeta">Tip: You can delete the M.S./B.S. lines if you prefer a shorter section.</div>
         </div>
       </div>
 
-      <!-- RIGHT: ABOUT with wrapped headshot -->
-      <div class="card aboutText">
-        <h2>About</h2>
+      <!-- RIGHT: ABOUT (with wrapped photo) -->
+      <div class="card clearfix">
+        <div class="aboutTitle">About</div>
 
-        <div class="aboutFloat">
+        <div class="aboutPhoto">
           <img src="assets/Yujun_headshot.jpg" alt="Yujun Ma headshot">
         </div>
 
-        <p>
+        <p style="margin:0; color:var(--muted); line-height:1.75; font-size:16.5px;">
           I work on multimodal and temporal deep learning spanning clinical time-series modeling (EHR),
           medical imaging and computational pathology, and video understanding. My recent work includes
           robust representation learning over time, generative modeling for computational staining/destaining,
           and video-based action recognition and captioning.
         </p>
 
-        <div class="clear"></div>
         <div style="margin-top:12px; color:var(--muted2); font-size:13px;">Last updated: 2026</div>
       </div>
     </div>
@@ -284,7 +304,7 @@
 
       <!-- Project 1 -->
       <div class="proj">
-        <div class="projTop">
+        <div class="projGrid">
           <div>
             <h3>Project 1 — EHR Time-series Modeling (Clinical Decision Support)</h3>
             <p>
@@ -300,18 +320,16 @@
           </div>
 
           <div class="figCard">
-            <div class="placeholder">
-              Leave this slot for an EHR figure later<br/>
-              (e.g., AUROC vs time / model diagram).
+            <div style="padding:16px; color:var(--muted2);">
+              (Add an EHR figure here later if you want)
             </div>
-            <div class="caption">EHR figure (optional)</div>
           </div>
         </div>
       </div>
 
       <!-- Project 2 -->
       <div class="proj">
-        <div class="projTop">
+        <div class="projGrid">
           <div>
             <h3>Project 2 — Computational Staining (Generative Modeling in Pathology)</h3>
             <p>
@@ -334,41 +352,38 @@
         </div>
       </div>
 
-      <!-- Project 3 -->
+      <!-- Project 3 (STACKED FIGURES) -->
       <div class="proj">
-        <div>
-          <h3>Project 3 — Video Understanding (Action Recognition & Video Captioning)</h3>
-          <p>
-            I develop models for video-based understanding, including action recognition and video captioning. My work explores
-            spatiotemporal representation learning and multimodal alignment, with model designs that improve recognition and
-            description of complex actions in videos.
-          </p>
-          <div class="chips">
-            <div class="chip">Action recognition</div>
-            <div class="chip">Video captioning</div>
-            <div class="chip">Spatiotemporal learning</div>
-            <div class="chip">Multimodal</div>
+        <h3>Project 3 — Video Understanding (Action Recognition & Video Captioning)</h3>
+        <p>
+          I develop models for video-based understanding, including action recognition and video captioning. My work explores
+          spatiotemporal representation learning and multimodal alignment, with model designs that improve recognition and
+          description of complex actions in videos.
+        </p>
+        <div class="chips">
+          <div class="chip">Action recognition</div>
+          <div class="chip">Video captioning</div>
+          <div class="chip">Spatiotemporal learning</div>
+          <div class="chip">Multimodal</div>
+        </div>
+
+        <div style="margin-top:14px;" class="figStack">
+          <div class="figCard">
+            <img src="assets/MFSTmodel_fig.png" alt="MFST model figure">
+            <div class="caption">MFST model figure</div>
           </div>
 
-          <!-- BIGGER figures under the text -->
-          <div class="figRow3">
-            <div class="figCard">
-              <img src="assets/MFSTmodel_fig.png" alt="MFST model figure">
-              <div class="caption">MFST model figure</div>
-            </div>
+          <div class="figCard">
+            <img src="assets/E_CMAT_fig.png" alt="E-CMAT figure">
+            <div class="caption">E-CMAT figure</div>
+          </div>
 
-            <div class="figCard">
-              <img src="assets/E_CMAT_fig.png" alt="E-CMAT figure">
-              <div class="caption">E-CMAT figure</div>
+          <div class="figCard">
+            <div class="figPlaceholder">
+              Leave this slot for a third figure later<br>
+              (e.g., video captioning / attention / qualitative results).
             </div>
-
-            <div class="figCard">
-              <div class="placeholder">
-                Leave this slot for a third figure later<br/>
-                (e.g., video captioning / attention / qualitative results).
-              </div>
-              <div class="caption">Future figure</div>
-            </div>
+            <div class="caption">Future figure</div>
           </div>
         </div>
       </div>
